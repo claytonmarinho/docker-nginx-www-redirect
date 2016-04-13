@@ -1,7 +1,7 @@
 server {
 	listen 80;
 	listen 443 ssl;
-	server_name $host
+	server_name $host;
 
 	if ($host ~* ^www\.(.*)) {       
 	    set $host_without_www $1;
