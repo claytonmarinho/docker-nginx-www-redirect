@@ -1,15 +1,19 @@
 server {
     listen 80;
 
-	if ($http_host ~* "^www\.(.+)$"){
-		rewrite ^(.*)$ http://%1$request_uri redirect;
+	if ($host ~ /^www\./) {
+		location {
+			rewrite ^ $2.$3.$4/$request_uri last;
+		}		
 	}
 }
 
 server {
     listen 443 ssl;
     
-	if ($http_host ~* "^www\.(.+)$"){
-		rewrite ^(.*)$ https://%1$request_uri redirect;
+	if ($host ~ /^www\./) {
+		location {
+			rewrite ^ $2.$3.$4/$request_uri last;
+		}		
 	}
 }
