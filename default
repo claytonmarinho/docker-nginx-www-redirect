@@ -1,11 +1,14 @@
 server {
 	listen 80;
 	server_name $host;
+	set $final_url https://$host$request_uri;
 
 	if ($host ~* ^www\.(.*)) {    
 	    set $non_www $1;
-	    return 301 https://$non_www$request_uri;
-	}
+	    set $final_url https://$non_www$request_uri;
+	} 
+
+	return 301 $final_url;
 }
 
 server {
