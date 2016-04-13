@@ -1,18 +1,9 @@
-FROM  ubuntu:12.04
+FROM  nginx:latest
 MAINTAINER Clayton Marinho <claytonmarinho@gmail.com>
-
-RUN echo 'deb http://archive.ubuntu.com/ubuntu precise main universe' > /etc/apt/sources.list
-RUN apt-get update
-
-# Install nginx
-RUN apt-get install -y -q nginx
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 # Expose port 80 and 443
 EXPOSE 80
 EXPOSE 443
 
-CMD ["nginx"]
-
 # Add in the config
-ADD default /etc/nginx/sites-available/default
+ADD nginx.conf /etc/nginx/nginx.conf
