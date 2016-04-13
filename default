@@ -2,9 +2,7 @@ server {
     listen 80;
 
 	if ($host ~ /^www\./) {
-		location {
-			rewrite ^ $2.$3.$4/$request_uri last;
-		}		
+		rewrite ^ $2.$3.$4/$request_uri;	
 	}
 }
 
@@ -12,8 +10,6 @@ server {
     listen 443 ssl;
     
 	if ($host ~ /^www\./) {
-		location {
-			rewrite ^ $2.$3.$4/$request_uri last;
-		}		
+		rewrite ^ $2.$3.$4/$request_uri;		
 	}
 }
