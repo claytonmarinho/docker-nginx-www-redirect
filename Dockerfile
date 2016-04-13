@@ -8,9 +8,8 @@ RUN apt-get update
 RUN apt-get install -y -q nginx
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
-# Expose port 80 and 443
+# Expose port 80
 EXPOSE 80
-EXPOSE 443
 
 CMD ["nginx"]
 
